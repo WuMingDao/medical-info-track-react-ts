@@ -1,41 +1,43 @@
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { eq } from "drizzle-orm";
-import { usersTable } from "../db/schema.ts";
+import { issueTable } from "../db/schema.ts";
 
 const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {
-  const user: typeof usersTable.$inferInsert = {
-    name: "John",
-    age: 30,
-    email: "john@example.com",
-  };
+  const issue: (typeof issueTable.$inferInsert)[] = [
+    {
+      poster: "John Doe",
+      createDate: "2023-01-15",
+      description: "The login button on the homepage is not clickable.",
+      image: "https://example.com/images/login_button_issue.png",
+      state: "wait", // <--- 修改为 "wait",
+      staffId: 101,
+    },
+    {
+      poster: "Jane Smith",
+      createDate: "2023-01-16",
+      description: "User profile page shows incorrect data for email field.",
+      image: "https://example.com/images/profile_email_error.jpg",
+      state: "fixing", // <--- 修改为 "fixing"
+      staffId: 102,
+    },
+    {
+      poster: "Peter Jones",
+      createDate: "2023-01-17",
+      description: "Application crashes when uploading files larger than 5MB.",
+      image: "https://example.com/images/file_upload_crash.mp4",
+      state: "complete", // <--- 修改为 "complete"
+      fixedDate: "2023-01-20",
+      staffId: 103,
+    },
+  ];
 
-  await db.insert(usersTable).values(user);
+  await db.insert(issueTable).values(issue);
   console.log("New user created!");
 
-  const users = await db.select().from(usersTable);
+  const users = await db.select().from(issueTable);
   console.log("Getting all users from the database: ", users);
-  /*
-  const users: {
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-  }[]
-  */
-
-  await db
-    .update(usersTable)
-    .set({
-      age: 31,
-    })
-    .where(eq(usersTable.email, user.email));
-  console.log("User info updated!");
-
-  await db.delete(usersTable).where(eq(usersTable.email, user.email));
-  console.log("User deleted!");
 }
 
 main();
