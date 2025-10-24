@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "tsc --noEmit && tsx ./src/scripts/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,14 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.9.1",
+    "@types/pg": "^8.15.5",
+    "drizzle-kit": "^0.31.5",
     "tsx": "^4.20.6"
   },
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "pg": "^8.16.3"
   }
 }
