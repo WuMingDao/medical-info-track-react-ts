@@ -8,7 +8,7 @@ async function main() {
   const issue: (typeof issueTable.$inferInsert)[] = [
     {
       poster: "John Doe",
-      createDate: "2023-01-15",
+      createDate: new Date("2023-01-14"), // "2023-01-15",
       description: "The login button on the homepage is not clickable.",
       image: "https://example.com/images/login_button_issue.png",
       state: "wait", // <--- 修改为 "wait",
@@ -16,7 +16,7 @@ async function main() {
     },
     {
       poster: "Jane Smith",
-      createDate: "2023-01-16",
+      createDate: new Date("2023-01-15"), // "2023-01-16",
       description: "User profile page shows incorrect data for email field.",
       image: "https://example.com/images/profile_email_error.jpg",
       state: "fixing", // <--- 修改为 "fixing"
@@ -24,7 +24,7 @@ async function main() {
     },
     {
       poster: "Peter Jones",
-      createDate: "2023-01-17",
+      createDate: new Date("2023-01-16"), // "2023-01-17",
       description: "Application crashes when uploading files larger than 5MB.",
       image: "https://example.com/images/file_upload_crash.mp4",
       state: "complete", // <--- 修改为 "complete"

@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "seed": "tsc --noEmit && tsx ./src/scripts/seed.ts"
+    "seed": "tsc --noEmit && tsx ./src/scripts/seed.ts",
+    "dev": "tsc --noEmit && tsx watch ./src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,10 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dayjs": "^1.11.18",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
+    "express": "^5.1.0",
     "pg": "^8.16.3"
   }
 }
