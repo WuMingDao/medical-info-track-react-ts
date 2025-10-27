@@ -7,7 +7,7 @@ export async function createStaff(req: Request, res: Response) {
   const { staffName, password } = req.body;
 
   if (!staffName || !password) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "failed",
       message: "Fields missing",
     });
