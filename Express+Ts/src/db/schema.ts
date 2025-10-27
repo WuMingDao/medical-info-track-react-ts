@@ -33,7 +33,7 @@ export const issueTable = pgTable("issues", {
   staffId: bigint("staff_id", { mode: "number" }),
 });
 
-export const staff = pgTable("staff", {
+export const staffTable = pgTable("staff", {
   id: bigint("id", { mode: "number" })
     .primaryKey()
     .generatedAlwaysAsIdentity()
