@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { issueRoute } from "./routes/issue.route.ts";
 import { staffRoute } from "./routes/staff.route.ts";
+import { pinoHttpMiddleware } from "./utils/logger.helper.ts";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use((_req, res, next) => {
 
   next();
 });
+
+app.use(pinoHttpMiddleware);
 
 app.use("/v1", issueRoute);
 app.use("/v1", staffRoute);
